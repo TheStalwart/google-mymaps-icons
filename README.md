@@ -2,6 +2,13 @@
 
 An effort to reverse engineer "mapspro" icon sets to correctly render KML/KMZ files exported from [Google My Maps](https://www.google.com/maps/d/) in alternative apps.
 
+To reproduce the issue:
+
+- export a KML/KMZ file containing color-customzied icons, e.g. [this one](https://www.google.com/maps/d/viewer?mid=1JKBG5M29xZP_Gl6QU4tQIeUD6MI&ll=55.5069850610042%2C25.60861000000001&z=15)
+- import it into any alternative app
+
+As of September 2024, vast majority of alternative apps will not render icons as set in Google My Maps.
+
 ## Original implementation
 
 When creating a map on Google My Maps and adding a marker (defined by "Placemark" tag in KML file) to it, there is an option to change the Placemark's style ("Style" (bucket fill icon) > "More Icons") by either picking from one of the two existing icon sets ("See older/newer icons") or uploading your own custom icon ("Custom icon" button).
