@@ -8,6 +8,7 @@ When creating a map on Google My Maps and adding a marker to it, there is an opt
 [This JS file on Google CDN](https://www.gstatic.com/mapspro/_/js/k=mapspro.mpid.en.htXxPIs22WQ.O/am=ACA/d=1/rs=ABjfnFWhAWDidD1z7xlmxZOQklbHy3456Q/m=mp_base,mp_edit) contains the implementation of both icon sets, including a mapping of icon IDs to icon names, and obfuscated code to generate URLs to customized "Newer" icons. While it might be possible to learn to use it as-is and document the private API, I would much prefer to research and document how this code works to create language-agnostic resource files and clean maintainable implementations for different programming languages I use for my projects.
 
 ## Source data
+
 ### Icon mappings
 
 - `YR` dictionary maps icon `id`s to icon `name`s and contains 1162 entries including icons from both the "Newer" and "Older" sets, but excludes the "Shapes" category of the "Older" set. Dictionary key is integer icon ID, and value is a string required to build a URL to the icon file on Google CDN. Sprite sheets of the "Newer" and "Older" icon sets together contain 1161 icon sprites. Icon #1899 is the default red pin of Google Maps.
@@ -27,6 +28,7 @@ The color can be changed for all of the "Newer" set icons, as well as the "Older
 To extract the data for use in alternative implementations, open a custom map for editing, then stringify the arrays/dictionaries in Dev Tools, e.g. `JSON.stringify(YR)` (all of the aforementioned variables are global).
 
 ## Exported data
+
 ### "Newer icons" set
 
 - `styleUrl` referencing an icon from this set contains icon ID and hex value for color, e.g. `#icon-1522-0F9D58`
