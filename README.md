@@ -71,6 +71,6 @@ To extract the data for use in alternative implementations, open a custom map fo
   - as a [single sprite sheet](https://www.gstatic.com/mapspro/images/stock/extended-icons3.png) (24 columns x 31 full rows + 19 icons on 32nd row = 763 icons)
     - individual icons are addressed using `background-position` CSS property
     - the sprite sheet contains icons that are not listed in Placemark customization icon picker
-    - there's an alternative version of the spritesheet with ![highlighted versions of the icons](http://www.gstatic.com/mapspro/images/stock/extended-icons-highlight3.png)
+    - there's an alternative version of the spritesheet with [highlighted versions of the icons](http://www.gstatic.com/mapspro/images/stock/extended-icons-highlight3.png)
   - icon-per-file, e.g. `https://www.gstatic.com/mapspro/images/stock/1157-crisis-infestation-rodents.png`
     - KML files contain a full URL like this in `Style` definition, unlike icons from "Newer" set
