@@ -4,7 +4,7 @@ An effort to reverse engineer "mapspro" icon sets to correctly render KML/KMZ fi
 
 ## Original implementation
 
-When creating a map on Google My Maps and adding a marker to it, there is an option to change the marker's style ("Style" (bucket fill icon) > "More Icons") by either picking from one of the two existing icon sets ("See older/newer icons") or uploading your own custom icon ("Custom icon" button).
+When creating a map on Google My Maps and adding a marker (defined by "Placemark" tag in KML file) to it, there is an option to change the Placemark's style ("Style" (bucket fill icon) > "More Icons") by either picking from one of the two existing icon sets ("See older/newer icons") or uploading your own custom icon ("Custom icon" button).
 [This JS file on Google CDN](https://www.gstatic.com/mapspro/_/js/k=mapspro.mpid.en.htXxPIs22WQ.O/am=ACA/d=1/rs=ABjfnFWhAWDidD1z7xlmxZOQklbHy3456Q/m=mp_base,mp_edit) contains the implementation of both icon sets, including a mapping of icon IDs to icon names, and obfuscated code to generate URLs to customized "Newer" icons. While it might be possible to learn to use it as-is and document the private API, I would much prefer to research and document how this code works to create language-agnostic resource files and clean maintainable implementations for different programming languages I use for my projects.
 
 ## Source data
@@ -23,7 +23,7 @@ When creating a map on Google My Maps and adding a marker to it, there is an opt
 - `piA` contains palette of 44 colors that seems to be a superset of `cT`, purpose is not known
 - `bT` and `Qia` contain color gradients and their purpose is not known.
 
-The color can be changed for all of the "Newer" set icons, as well as the "Older" set "Shapes" icons, while the rest of the "Older" set colors are hardcoded. Picking a color for an icon whose color can be changed and then switching to an icon whose color cannot be changed does not reset the color of the marker and the exported KML file will have that marker with a `styleUrl` defining the icon from one set and a color from a palette for a different set. As far as I can see, color palettes are an arbitrary limitation in the UI, not a format or data structure constraint. Icons that can be color tinted should be expected to be of any 32bit color.
+The color can be changed for all of the "Newer" set icons, as well as the "Older" set "Shapes" icons, while the rest of the "Older" set colors are hardcoded. Picking a color for an icon whose color can be changed and then switching to an icon whose color cannot be changed does not reset the color of the Placemark and the exported KML file will have that Placemark with a `styleUrl` defining the icon from one set and a color from a palette for a different set. As far as I can see, color palettes are an arbitrary limitation in the UI, not a format or data structure constraint. Icons that can be color tinted should be expected to be of any 32bit color.
 
 To extract the data for use in alternative implementations, open a custom map for editing, then stringify the arrays/dictionaries in Dev Tools, e.g. `JSON.stringify(YR)` (all of the aforementioned variables are global).
 
@@ -63,7 +63,7 @@ To extract the data for use in alternative implementations, open a custom map fo
 - Icon image files are distributed in two formats:
   - as a [single sprite sheet](https://www.gstatic.com/mapspro/images/stock/extended-icons3.png) (24 columns x 31 full rows + 19 icons on 32nd row = 763 icons)
     - individual icons are addressed using `background-position` CSS property
-    - the sprite sheet contains icons that are not listed in marker customization icon picker
+    - the sprite sheet contains icons that are not listed in Placemark customization icon picker
     - there's an alternative version of the spritesheet with ![highlighted versions of the icons](http://www.gstatic.com/mapspro/images/stock/extended-icons-highlight3.png)
   - icon-per-file, e.g. `https://www.gstatic.com/mapspro/images/stock/1157-crisis-infestation-rodents.png`
     - KML files contain a full URL like this in `Style` definition, unlike icons from "Newer" set
