@@ -25,12 +25,12 @@ When creating a map on Google My Maps and adding a marker (defined by "Placemark
 ### Color palettes
 
 - `$R` dictionary contains alphanumeric human-readable keys for 147 colors. Purpose of this dictionary is not known.
-- `eT` contains palette of 30 colors used for "Shapes" subset of "Older" icons
+- `eT` contains palette of 30 colors used for "Shapes" category of "Older" icons
 - `cT` contains palette of 30 colors used for tinting "Newer" icons
 - `piA` contains palette of 44 colors that seems to be a superset of `cT`, purpose is not known
 - `bT` and `Qia` contain color gradients and their purpose is not known.
 
-The color can be changed for all of the "Newer" set icons, as well as the "Older" set "Shapes" icons, while the rest of the "Older" set icons cannot be customized. Google My Maps UI does not allow picking arbitrary color for an icon, and provides two distinct palettes - one for "Newer" icon set, and another for "Shapes" category of icons from "Older" set. Picking a color only present in one palette and then switching to an icon from a set with a different palette - does not reset the color of the Placemark and the exported KML file will have that Placemark with a `styleUrl` defining the icon from one set and a color from a palette for a different set. As far as I can see, color palettes are an arbitrary limitation in the UI, not a format or data structure constraint. Icons that can be color tinted should be expected to be of any 32bit color.
+The color can be changed for all of the "Newer" set icons, as well as the "Shapes" category of "Older" icon set , while the rest of the "Older" set icons cannot be customized. Google My Maps UI does not allow picking arbitrary color for an icon, and provides two distinct palettes - one for "Newer" icon set, and another for "Shapes" category of icons from "Older" set. Picking a color only present in one palette and then switching to an icon from a set with a different palette - does not reset the color of the Placemark and the exported KML file will have that Placemark with a `styleUrl` defining the icon from one set and a color from a palette for a different set. As far as I can see, color palettes are an arbitrary limitation in the UI, not a format or data structure constraint. Icons that can be color tinted should be expected to be of any 32bit color.
 
 To extract the data for use in alternative implementations, open a custom map for editing, then stringify the arrays/dictionaries in Dev Tools, e.g. `JSON.stringify(YR)` (all of the aforementioned variables are global).
 
